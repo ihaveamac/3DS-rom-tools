@@ -12,13 +12,14 @@ This guide explains how you can extract the contents out of a game, decrypted or
 
 ## Useful notes
 * NCCH partitions of a rom
-  Partition | Use | Type
-  --- | --- | ---
-  0 | Game Executable | CXI
-  1 | Manual | CFA
-  2 | Download Play Child container | CFA
-  6 | New3DS Update Data | CFA
-  7 | Old3DS Update Data | CFA
+
+    Partition | Use | Type
+    --- | --- | ---
+    0 | Game Executable | CXI
+    1 | Manual | CFA
+    2 | Download Play Child container | CFA
+    6 | New3DS Update Data | CFA
+    7 | Old3DS Update Data | CFA
 
 ## Method 1 - Decrypted game with ctrtool
 1. Put your rom in its own folder.
