@@ -1,0 +1,2 @@
+# rsf must have DOS line endings
+*.rsf text eol=crlf
