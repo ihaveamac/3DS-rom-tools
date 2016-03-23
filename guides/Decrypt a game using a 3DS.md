@@ -29,7 +29,7 @@ This guide explains how you can decrypt a game's contents so you can extract its
 6. Your games should now be decrypted and usable on a computer.
 
 ## Common Errors
-`/Decrypt9/Decrypt9.log` can
+`/Decrypt9/Decrypt9.log` can contain errors that might have happened decrypting games.
 - "7.x crypto will fail on O3DS < 7.x or A9LH", "Secure3 crypto will fail", "Secure4 crypto will fail"
    - You need the appropriate key above.
 - *More will be added here...*
