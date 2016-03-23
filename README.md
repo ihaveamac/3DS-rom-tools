@@ -12,3 +12,7 @@ some stuff when doing things with Nintendo 3DS games and applications (.3ds/.cci
 * `rsfgen_cia.py` - modified rsfgen, generates a .rsf, using a decrypted .cia and a template rsf
 * `rsfgen_norom.py` - modified rsfgen, generates a .rsf only using decrypted exheader and a template rsf, does not automatically get CompanyCode, ProductCode, or UniqueId
 * `dummy.rsf` - a template rsf for use with rsfgen; must have DOS line endings (CR LF, try unix2dos if your generated rsf looks strange) ([original source](https://gist.github.com/mid-kid/d9c4ce50407c71ec9ef3))
+
+# Guides - `/guides`
+* `Decrypt a game using a 3DS.md`
+* `Extract a game (.3ds, .cci, .app).md`
