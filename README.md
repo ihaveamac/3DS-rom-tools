@@ -1,6 +1,6 @@
 # 3DS-rom-stuff
 
-some stuff when doing things with Nintendo 3DS games and applications (.3ds/.cci/.app, .cia)
+some stuff when doing things with Nintendo 3DS games and applications (.3ds/.cci, .cia)
 
 There exist some work-in-progress guides at this repository's Wiki: https://github.com/ihaveamac/3DS-rom-stuff/wiki
 
