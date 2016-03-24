@@ -1,10 +1,9 @@
-# 3DS-rom-stuff
-
-some stuff when doing things with Nintendo 3DS games and applications (.3ds/.cci, .cia)
+# 3DS ROM Tools
+Tools and guides for working with Nintendo 3DS games and applications (.3ds/.cci, .cia)
 
 There exist some work-in-progress guides at this repository's Wiki: https://github.com/ihaveamac/3DS-rom-stuff/wiki
 
-## ncchinfo generation - `/ncchinfo_gen`
+## NCCHInfo generation - `/ncchinfo_gen`
 * `ncchinfo_gen.py` - generates `ncchinfo.bin`, which will generate XORpads for a game's ExHeader/ExeFS/RomFS on a 3DS console ([original source](https://github.com/d0k3/Decrypt9WIP/blob/2935c881f436cc940f44a9455c2ae63aff1744d8/scripts/ncchinfo_gen.py))
 * `ncchinfo_gen_exefs.py` - generates `ncchinfo.bin` which will only generate XORpads for a rom's ExeFS
 * `ncchinfo_gen_exheader.py` - generates `ncchinfo.bin` which will only generate XORpads for a rom's ExHeader
