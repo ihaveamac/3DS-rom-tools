@@ -87,7 +87,7 @@ class ncsdHdr(Structure):
         ('padding2', c_uint8 * 0x30),
     ]
 
-ncsdPartitions = [b'Main', b'Manual', b'DownloadPlay', b'Partition4', b'Partition5', b'Partition6', b'Partition7', b'UpdateData']
+ncsdPartitions = [b'Main', b'Manual', b'DownloadPlay', b'Partition3', b'Partition4', b'Partition5', b'N3DSUpdateData', b'O3DSUpdateData']
 
 def roundUp(numToRound, multiple):  #From http://stackoverflow.com/a/3407254
     if (multiple == 0):
