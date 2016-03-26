@@ -192,11 +192,11 @@ def parseNCCH(fh, offs=0, idx=0, titleId='', standAlone=1):
    
     print ''
     
-    #if header.exhdrSize:
-        #data = data + parseNCCHSection(header, ncchSection.exheader, 0, fixed_key_flag, 1, tab)
-        #data = data + genOutName(titleId, ncsdPartitions[idx], b'exheader')
-        #entries += 1
-        #print ''
+    if header.exhdrSize:
+        data = data + parseNCCHSection(header, ncchSection.exheader, 0, fixed_key_flag, 1, tab)
+        data = data + genOutName(titleId, ncsdPartitions[idx], b'exheader')
+        entries += 1
+        print ''
     if header.exefsSize: #We need generate two xorpads for exefs if it uses 7.x crypto, since only a part of it uses the new crypto.
         data = data + parseNCCHSection(header, ncchSection.exefs, 0, fixed_key_flag, 1, tab)
         data = data + genOutName(titleId, ncsdPartitions[idx], b'exefs_norm')
@@ -218,10 +218,9 @@ def parseNCCH(fh, offs=0, idx=0, titleId='', standAlone=1):
 
 def parseNCCHSection(header, type, ncchFlag3, ncchFlag7, doPrint, tab):
     if type == ncchSection.exheader:
-        return
-        #sectionName = 'ExHeader'
-        #offset = 0x200 #Always 0x200
-        #sectionSize = header.exhdrSize * mediaUnitSize
+        sectionName = 'ExHeader'
+        offset = 0x200 #Always 0x200
+        sectionSize = header.exhdrSize * mediaUnitSize
     elif type == ncchSection.exefs:
         sectionName = 'ExeFS'
         offset = header.exefsOffset * mediaUnitSize
@@ -262,7 +261,7 @@ def genOutName(titleId, partitionName, sectionName):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print 'usage: ncchinfo_gen_exefs.py files..'
+        print 'usage: ncchinfo_gen_exh.py files..'
         print '  Supports parsing both CCI(.3ds) and NCCH files.'
         print '  Wildcards are supported'
         print '  Example: ncchinfo_gen.py *.ncch SM3DL.3ds'

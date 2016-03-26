@@ -5,8 +5,7 @@ There exist some work-in-progress guides at this repository's Wiki: https://gith
 
 ## NCCHInfo generation - `/ncchinfo_gen`
 * `ncchinfo_gen.py` - Generates `ncchinfo.bin`, which will generate XORpads for a game's ExHeader/ExeFS/RomFS on a 3DS console ([original source](https://github.com/d0k3/Decrypt9WIP/blob/2935c881f436cc940f44a9455c2ae63aff1744d8/scripts/ncchinfo_gen.py))
-* `ncchinfo_gen_exefs.py` - Generates `ncchinfo.bin` which will only generate XORpads for a rom's ExeFS
-* `ncchinfo_gen_exheader.py` - Generates `ncchinfo.bin` which will only generate XORpads for a rom's ExHeader
+* `ncchinfo_gen_exh.py` - Generates `ncchinfo.bin` which will only generate XORpads for a rom's ExHeader and ExeFS
 
 ## RSF generation - `/rsfgen`
 * `rsfgen.py` - Generates a .rsf, using a .3ds/.cci, decrypted exheader, and a template RSF ([original source](https://gbatemp.net/threads/release-exinjector-inject-original-exheaders-into-repacked-roms.373839/page-16#post-5298180))
