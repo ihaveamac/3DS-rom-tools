@@ -30,6 +30,10 @@ with open(args.cia[0], "rb") as f:
 	#c[::2], c[1::2] = c[1::2], c[::2]
 	uid = "00" + "".join(c)
 
+	# I found 3 offsets for the NCCH magic:
+	# 0x3A00, 0x3A40, 0x3A80
+	# it goes long with "Content Offset", which I can't figure out how to find in python yet.
+
 	f.seek(0x3A00)
 	if f.read(4) == "NCCH":
 		ncch_offset = 0x3A00
@@ -40,7 +44,12 @@ with open(args.cia[0], "rb") as f:
 			ncch_offset = 0x3A40
 			exheader_offset = 0x3B40
 		else:
-			sys.exit("NCCH magic not at a known offset")
+			f.seek(0x38A0)
+			if f.read(4) == "NCCH":
+				ncch_offset = 0x3A80
+				exheader_offset = 0x3B80
+			else:
+				sys.exit("NCCH magic not at a known offset")
 
 	print("NCCH offset:     "+hex(ncch_offset))
 	print("ExHeader offset: "+hex(exheader_offset))
