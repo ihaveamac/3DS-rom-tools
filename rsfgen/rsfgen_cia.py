@@ -19,6 +19,9 @@ parser.add_argument('-s', '--spoof',
 # Parse the command line for supplied arguments
 args = parser.parse_args()
 
+ncch_offset = 0x3A00
+exheader_offset = 0x3B00
+
 with open(args.cia[0], "rb") as f:
 	f.seek(0x2C20) # UniqueId
 	uid = f.read(3)
@@ -26,34 +29,50 @@ with open(args.cia[0], "rb") as f:
 	c = list(uid)
 	#c[::2], c[1::2] = c[1::2], c[::2]
 	uid = "00" + "".join(c)
-	f.seek(0x3A10) # CompanyCode
+
+	f.seek(0x3A00)
+	if f.read(4) == "NCCH":
+		ncch_offset = 0x3A00
+		exheader_offset = 0x3B00
+	else:
+		f.seek(0x3A40)
+		if f.read(4) == "NCCH":
+			ncch_offset = 0x3A40
+			exheader_offset = 0x3B40
+		else:
+			sys.exit("NCCH magic not at a known offset")
+
+	print("NCCH offset:     "+hex(ncch_offset))
+	print("ExHeader offset: "+hex(exheader_offset))
+
+	f.seek(ncch_offset+0x10) # CompanyCode
 	read = f.read(2)
 	ccode = "".join(struct.unpack('<cc', read))
-	f.seek(0x3A50) # ProductCode
+	f.seek(ncch_offset+0x50) # ProductCode
 	read = f.read(10)
 	pcode = "".join(struct.unpack('<cccccccccc', read))
 	pcode = pcode.rstrip(' \0')
 	
-	f.seek(0x3B00+0) # Title
+	f.seek(exheader_offset+0) # Title
 	read = f.read(8)
 	title = "".join(struct.unpack('<cccccccc', read))
 	title = title.rstrip(' \0')
 	
-	f.seek(0x3B00+0xE) # Remaster version
+	f.seek(exheader_offset+0xE) # Remaster version
 	rver = f.read(2)
 	rver = (binascii.hexlify(rver))[::-1]
 	c = list(rver)
 	c[::2], c[1::2] = c[1::2], c[::2]
 	rver = "".join(c)
 	
-	f.seek(0x3B00+0x1C) # Stacksize
+	f.seek(exheader_offset+0x1C) # Stacksize
 	stack = f.read(4)
 	stack = (binascii.hexlify(stack))[::-1]
 	c = list(stack)
 	c[::2], c[1::2] = c[1::2], c[::2]
 	stack = "".join(c)
 	
-	f.seek(0x3B00+0x40) # Dependencies
+	f.seek(exheader_offset+0x40) # Dependencies
 	dep = range(48)
 	for i in range(48):
 		dep[i] = f.read(8)
@@ -61,43 +80,43 @@ with open(args.cia[0], "rb") as f:
 		c = list(dep[i])
 		c[::2], c[1::2] = c[1::2], c[::2]
 		dep[i] = "".join(c)
-	f.seek(0x3B00+0x247) # Uses extended save data access?
+	f.seek(exheader_offset+0x247) # Uses extended save data access?
 	r = f.read(1)
 	uext = binascii.hexlify(r)
 	if uext == "00":
-		f.seek(0x3B00+0x230) # ExtSaveDataId
+		f.seek(exheader_offset+0x230) # ExtSaveDataId
 		exts = f.read(8)
 		exts = (binascii.hexlify(exts))[::-1]
 		c = list(exts)
 		c[::2], c[1::2] = c[1::2], c[::2]
 		exts = "".join(c)
-		f.seek(0x3B00+0x238) # System save id 1
+		f.seek(exheader_offset+0x238) # System save id 1
 		ssid1 = f.read(4)
 		ssid1 = (binascii.hexlify(ssid1))[::-1]
 		c = list(ssid1)
 		c[::2], c[1::2] = c[1::2], c[::2]
 		ssid1 = "".join(c)
-		f.seek(0x3B00+0x23C) # System save id 2
+		f.seek(exheader_offset+0x23C) # System save id 2
 		ssid2 = f.read(4)
 		ssid2 = (binascii.hexlify(ssid2))[::-1]
 		c = list(ssid2)
 		c[::2], c[1::2] = c[1::2], c[::2]
 		ssid2 = "".join(c)
-		f.seek(0x3B00+0x240) # Other save id 1
+		f.seek(exheader_offset+0x240) # Other save id 1
 		osid1 = f.read(3)
 		osid1 = (binascii.hexlify(osid1))[::-1]
 		c = list(osid1)
 		c[::2], c[1::2] = c[1::2], c[::2]
 		osid1 = "".join(c)
 		osid1 = osid1[1:]
-		f.seek(0x3B00+0x242) # Other save id 2
+		f.seek(exheader_offset+0x242) # Other save id 2
 		osid2 = f.read(3)
 		osid2 = (binascii.hexlify(osid2))[::-1]
 		c = list(osid2)
 		c[::2], c[1::2] = c[1::2], c[::2]
 		osid2 = "".join(c)
 		osid2 = osid2[:5]
-		f.seek(0x3B00+0x245) # Other save id 2
+		f.seek(exheader_offset+0x245) # Other save id 2
 		osid3 = f.read(3)
 		osid3 = (binascii.hexlify(osid3))[::-1]
 		c = list(osid3)
@@ -106,21 +125,21 @@ with open(args.cia[0], "rb") as f:
 		osid3 = osid3[1:]
 	
 	if uext == "10":
-		f.seek(0x3B00+0x240) # Other save id 1
+		f.seek(exheader_offset+0x240) # Other save id 1
 		esid1 = f.read(3)
 		esid1 = (binascii.hexlify(esid1))[::-1]
 		c = list(esid1)
 		c[::2], c[1::2] = c[1::2], c[::2]
 		esid1 = "".join(c)
 		esid1 = esid1[1:]
-		f.seek(0x3B00+0x242) # Other save id 2
+		f.seek(exheader_offset+0x242) # Other save id 2
 		esid2 = f.read(3)
 		esid2 = (binascii.hexlify(esid2))[::-1]
 		c = list(esid2)
 		c[::2], c[1::2] = c[1::2], c[::2]
 		esid2 = "".join(c)
 		esid2 = esid2[:5]
-		f.seek(0x3B00+0x245) # Other save id 2
+		f.seek(exheader_offset+0x245) # Other save id 2
 		esid3 = f.read(3)
 		esid3 = (binascii.hexlify(esid3))[::-1]
 		c = list(esid3)
@@ -128,21 +147,21 @@ with open(args.cia[0], "rb") as f:
 		esid3 = "".join(c)
 		esid3 = esid3[1:]
 		
-		f.seek(0x3B00+0x230) # Other save id 1
+		f.seek(exheader_offset+0x230) # Other save id 1
 		esid4 = f.read(3)
 		esid4 = (binascii.hexlify(esid4))[::-1]
 		c = list(esid4)
 		c[::2], c[1::2] = c[1::2], c[::2]
 		esid4 = "".join(c)
 		esid4 = esid4[1:]
-		f.seek(0x3B00+0x232) # Other save id 2
+		f.seek(exheader_offset+0x232) # Other save id 2
 		esid5 = f.read(3)
 		esid5 = (binascii.hexlify(esid5))[::-1]
 		c = list(esid5)
 		c[::2], c[1::2] = c[1::2], c[::2]
 		esid5 = "".join(c)
 		esid5 = esid5[:5]
-		f.seek(0x3B00+0x235) # Other save id 2
+		f.seek(exheader_offset+0x235) # Other save id 2
 		esid6 = f.read(3)
 		esid6 = (binascii.hexlify(esid6))[::-1]
 		c = list(esid6)
@@ -151,7 +170,7 @@ with open(args.cia[0], "rb") as f:
 		esid6 = esid6[1:]
 	
 	
-	f.seek(0x3B00+0x248) # Access control FileSystemAccess
+	f.seek(exheader_offset+0x248) # Access control FileSystemAccess
 	r = f.read(6)
 	c = (binascii.hexlify(r))
 	c = list(c)
@@ -200,14 +219,14 @@ with open(args.cia[0], "rb") as f:
 	if c[5] == "1":
 		fsaccess[20] = "-"
 	
-	f.seek(0x3B00+0x250) # ServiceAccessControl
+	f.seek(exheader_offset+0x250) # ServiceAccessControl
 	svcacc = range(32)
 	for i in range(32):
 		r = f.read(8)
 		r = r.rstrip("\0")
 		svcacc[i] = r
 	
-	f.seek(0x3B00+0x394) # Access control ARM11
+	f.seek(exheader_offset+0x394) # Access control ARM11
 	b = f.read(1)
 	b = binascii.hexlify(b)
 	b = bin(int(b, 16))[2:]
@@ -221,14 +240,14 @@ with open(args.cia[0], "rb") as f:
 			accesslist[i] = "false"
 		i += 1
 	
-	f.seek(0x3B00+0x39C)
+	f.seek(exheader_offset+0x39C)
 	b = f.read(1)
 	b = str(int(binascii.hexlify(b), 16))
 	kr = 0
 	if b != "255":
 		kmin = b
 		kr = 1
-	f.seek(0x3B00+0x39D)
+	f.seek(exheader_offset+0x39D)
 	b = f.read(1)
 	b = str(int(binascii.hexlify(b), 16))
 	if b != "255":
