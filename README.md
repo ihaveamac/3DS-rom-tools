@@ -10,8 +10,14 @@ There exist some work-in-progress guides at this repository's Wiki: https://gith
 ## RSF generation - `/rsfgen`
 * `rsfgen.py` - Generates a .rsf, using a .3ds/.cci, decrypted exheader, and a template RSF ([original source](https://gbatemp.net/threads/release-exinjector-inject-original-exheaders-into-repacked-roms.373839/page-16#post-5298180))
 * `rsfgen_cia.py` - Modified rsfgen, generates a .rsf, using a decrypted CIA and a template RSF
-* `rsfgen_norom.py` - Modified rsfgen, generates a .rsf only using decrypted ExHeader and a template RSF; does not automatically get CompanyCode, ProductCode, or UniqueId
+* `rsfgen_exh.py` - Modified rsfgen, generates a .rsf only using decrypted ExHeader and a template RSF; does not automatically get CompanyCode, ProductCode, or UniqueId
 * `dummy.rsf` - Template RSF for use with rsfgen; must have DOS line endings (CR LF, try unix2dos if your generated rsf looks strange) ([original source](https://gist.github.com/mid-kid/d9c4ce50407c71ec9ef3))
 
-## Downloading
-* `TitleDownloader.py` - download update files from Nintendo CDN; requires [make_cdn_cia](https://github.com/ihaveamac/ctr_toolkit/tree/master/make_cdn_cia) in the user's PATH
+## Downloading - `/downloading`
+* `TitleDownloader.py` - download update files from Nintendo CDN; requires [make_cdn_cia](https://github.com/ihaveamac/ctr_toolkit/tree/master/make_cdn_cia) in the user's PATH ([original source](https://gist.github.com/meowy/793cf60a632f8d29e38b))
+
+## External tools
+* [Decrypt9WIP](https://github.com/d0k3/Decrypt9WIP) by @d0k3 - Multipurpose content dumper and decryptor
+* [Decrypt9UI](https://github.com/Shadowtrance/Decrypt9) by @Shadowtrance - Decrypt9WIP with a more fancy GUI
+* [FunkyCIA2](https://gbatemp.net/threads/release-funkycia2-build-cias-from-your-eshop-content-super-easy-and-fast-2-1-fix.376941/) by cearp - Terminal utility to download eShop purchases with a dumped `ticket.db`
+* [GroovyCIA](https://gbatemp.net/threads/release-groovycia.414004/) by @Ptrk25 - GUI version with a similar function to FunkyCIA2

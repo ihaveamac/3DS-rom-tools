@@ -5,7 +5,7 @@ import sys
 import argparse
 
 # Set up the CLI parser and generate help
-parser = argparse.ArgumentParser(description='RSF file generator for 3DS exheader manipulation (modified to not use rom)')
+parser = argparse.ArgumentParser(description='RSF file generator for 3DS exheader manipulation (using only exheader)')
 parser.add_argument('-e', '--exheader',
 	help='decrypted exheader.bin file', metavar='FILE', required=True, nargs=1)
 parser.add_argument('-o', '--rsf',
