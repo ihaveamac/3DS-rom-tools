@@ -12,6 +12,7 @@ There exist some work-in-progress guides at this repository's Wiki: https://gith
 * `rsfgen_cia.py` - Modified rsfgen, generates a .rsf, using a decrypted CIA and a template RSF
 * `rsfgen_exh.py` - Modified rsfgen, generates a .rsf only using decrypted ExHeader and a template RSF; does not automatically get CompanyCode, ProductCode, or UniqueId
 * `dummy.rsf` - Template RSF for use with rsfgen; must have DOS line endings (CR LF, try unix2dos if your generated rsf looks strange) ([original source](https://gist.github.com/mid-kid/d9c4ce50407c71ec9ef3))
+* `dummy.rsf.zip` - Archived-form of `dummy.rsf`, as an easy way to download this file with the proper line endings
 
 ## Downloading - `/downloading`
 * `TitleDownloader.py` - download update files from Nintendo CDN; requires [make_cdn_cia](https://github.com/ihaveamac/ctr_toolkit/tree/master/make_cdn_cia) in the user's PATH ([original source](https://gist.github.com/meowy/793cf60a632f8d29e38b))
