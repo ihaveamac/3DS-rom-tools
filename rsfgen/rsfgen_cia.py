@@ -3,6 +3,7 @@ import struct
 import binascii
 import sys
 import argparse
+import math
 
 # Set up the CLI parser and generate help
 parser = argparse.ArgumentParser(description='RSF file generator for 3DS exheader manipulation (using CIA files)')
@@ -19,9 +20,6 @@ parser.add_argument('-s', '--spoof',
 # Parse the command line for supplied arguments
 args = parser.parse_args()
 
-ncch_offset = 0x3A00
-exheader_offset = 0x3B00
-
 with open(args.cia[0], "rb") as f:
 	f.seek(0x2C20) # UniqueId
 	uid = f.read(3)
@@ -30,27 +28,36 @@ with open(args.cia[0], "rb") as f:
 	#c[::2], c[1::2] = c[1::2], c[::2]
 	uid = "00" + "".join(c)
 
-	# I found 3 offsets for the NCCH magic:
-	# 0x3A00, 0x3A40, 0x3A80
-	# it goes long with "Content Offset", which I can't figure out how to find in python yet.
+	# thanks to https://www.3dbrew.org/wiki/CIA#CIA_Header I figured out how to find the content offset properly
 
-	f.seek(0x3A00)
-	if f.read(4) == "NCCH":
-		ncch_offset = 0x3A00
-		exheader_offset = 0x3B00
-	else:
-		f.seek(0x3A40)
-		if f.read(4) == "NCCH":
-			ncch_offset = 0x3A40
-			exheader_offset = 0x3B40
-		else:
-			f.seek(0x38A0)
-			if f.read(4) == "NCCH":
-				ncch_offset = 0x3A80
-				exheader_offset = 0x3B80
-			else:
-				sys.exit("NCCH magic not at a known offset, or CIA is encrypted")
+	# Archive Header Size
+	f.seek(0x0)
+	cia_h_ahs = binascii.hexlify(f.read(0x4)[::-1])
 
+	# Certificate chain size
+	f.seek(0x8)
+	cia_h_cetks = binascii.hexlify(f.read(0x4)[::-1])
+
+	# Ticket size
+	f.seek(0xC)
+	cia_h_tiks = binascii.hexlify(f.read(0x4)[::-1])
+
+	# TMD size
+	f.seek(0x10)
+	cia_h_tmds = binascii.hexlify(f.read(0x4)[::-1])
+
+	# Content size
+	f.seek(0x18)
+	cia_h_contents = binascii.hexlify(f.read(0x8)[::-1])
+
+	content_offset = int(math.ceil(int(cia_h_ahs, 16) / 64.0) * 64.0 + math.ceil(int(cia_h_cetks, 16) / 64.0) * 64.0 + math.ceil(int(cia_h_tiks, 16) / 64.0) * 64.0 + math.ceil(int(cia_h_tmds, 16) / 64.0) * 64.0)
+
+	f.seek(content_offset+0x100)
+	ncch_offset = content_offset+0x100
+	exheader_offset = ncch_offset+0x100
+
+	if f.read(4) != "NCCH":
+		sys.exit("CIA is probably encrypted (NCCH magic not found)")
 	print("NCCH offset:     "+hex(ncch_offset))
 	print("ExHeader offset: "+hex(exheader_offset))
 
