@@ -49,7 +49,7 @@ with open(args.cia[0], "rb") as f:
 				ncch_offset = 0x3A80
 				exheader_offset = 0x3B80
 			else:
-				sys.exit("NCCH magic not at a known offset")
+				sys.exit("NCCH magic not at a known offset, or CIA is encrypted")
 
 	print("NCCH offset:     "+hex(ncch_offset))
 	print("ExHeader offset: "+hex(exheader_offset))
