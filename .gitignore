@@ -1,3 +1,8 @@
+# sometimes do my tests in my local clone, so let's not accidentally upload roms and stuff
+*.cia
+*.3ds
+*.cci
+
 # Created by .ignore support plugin (hsz.mobi)
 ### JetBrains template
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio

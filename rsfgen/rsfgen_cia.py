@@ -58,6 +58,7 @@ with open(args.cia[0], "rb") as f:
 
 	if f.read(4) != "NCCH":
 		sys.exit("CIA is probably encrypted (NCCH magic not found)")
+
 	print("NCCH offset:     "+hex(ncch_offset))
 	print("ExHeader offset: "+hex(exheader_offset))
 
