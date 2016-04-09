@@ -17,6 +17,11 @@ There exist some work-in-progress guides at this repository's Wiki: https://gith
 ## Downloading - `/downloading`
 * `TitleDownloader.py` - download update files from Nintendo CDN; requires [make_cdn_cia](https://github.com/ihaveamac/ctr_toolkit/tree/master/make_cdn_cia) in the user's PATH ([original source](https://gist.github.com/meowy/793cf60a632f8d29e38b))
 
+## SeedDB - `/seeddb`
+* `seeddb.bin` - contains seeds for games using seed crypto introduced in 9.6.0-24
+ * [List of games and title IDs that use seed crypto](https://github.com/ihaveamac/3DS-rom-tools/wiki/SeedDB-list)
+* `seeddb_list.txt` - list of game names, title IDs, and seeds in `seeddb.bin` ([original source based on](http://pastebin.com/zNM8zYwa))
+
 ## External tools
 * [Decrypt9WIP](https://github.com/d0k3/Decrypt9WIP) by @d0k3 - Multipurpose content dumper and decryptor
 * [Decrypt9UI](https://github.com/Shadowtrance/Decrypt9) by @Shadowtrance - Decrypt9WIP with a more fancy GUI
