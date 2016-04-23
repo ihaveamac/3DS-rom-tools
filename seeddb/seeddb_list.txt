@@ -1,3 +1,11 @@
+Ninja Smasher!
+000400000018CD00
+956e55fa29793e2813c71a23860234a8
+
+ポラーラ -Polara-
+000400000016FB00
+9fefb6ebe233f836f78f26c8e554c462
+
 ディズニーアートアカデミー
 0004000000160E00
 7b3abec9ee0f49443436bc4bee2f1411
@@ -901,6 +909,38 @@ amiibo Challenge
 000400000016C200
 5de8124c8e64448716a662b247a3de9c
 
+Langrisser Re:Incarnation
+-TENSEI-
+0004000000187F00
+d84504da25c45f645dbd8da7b8aefabf
+
+BRAVELY SECOND™:
+END LAYER
+000400000017BA00
+fb0d614f4d9a72b2b99b08d35ae33158
+
+The Legend of Zelda™:
+A Link to the Past™
+000400000F701000
+49b010885464f4556815689845cf809a
+
+Super Metroid™
+000400000F701200
+7339e3b264afa41dba7ccd895491eb2f
+
+Donkey Kong Country 2:
+Diddy's Kong Quest™
+000400000F702000
+513c58512033bd6ef486c8c2e5c99199
+
+Super Strike Beach Volleyball™
+0004000000190400
+690fc8c5b9ddc620a02e71ec5c163941
+
+Excave III : Tower of Destiny
+000400000016E000
+93be0bcbf33b9af106ab9520c861466c
+
 Doll Fashion Atelier
 000400000018AA00
 ec1c0c57674f11629de38f4a36301020
@@ -1453,6 +1493,19 @@ Smash Controller
 000400000014C500
 7aa0cbb67aea768e97d1113f1b048a26
 
+Dan McFox: Head Hunter
+000400000018FB00
+4064fd55f9317eea13f9791c179a6398
+
+Langrisser Re:Incarnation 
+-TENSEI-
+000400000018C100
+fc2a991e75cb041bae0849f5ef5326a8
+
+Super Strike Beach Volleyball™
+0004000000191B00
+b94aa78b7ed92168b767bd4b2dacbf62
+
 Mario & Sonic at the Rio 2016
 Olympic Games™
 000400000017E300
@@ -1465,11 +1518,6 @@ ee405df18e6aeb789463738577740255
 Justice Chronicles
 0004000000193600
 7fbc0d41a1d5f5189b3a65673285b6a1
-
-Donkey Kong Country™ 2: 
-Diddy's Kong Quest™
-000400000F702000
-513c58512033bd6ef486c8c2e5c99199
 
 Hyrule Warriors™ Legends
 000400000017EB00
@@ -1486,15 +1534,6 @@ ccb9a25d0f216cc2a58f1b851d3d4368
 Stella Glow
 000400000017C700
 8c03c459cb40536099f5c4fc0026c0a5
-
-The Legend of Zelda™:
-A Link to the Past
-000400000F701000
-49b010885464f4556815689845cf809a
-
-Super Metroid™
-000400000F701200
-7339e3b264afa41dba7ccd895491eb2f
 
 Parascientific Escape Cruise
 in the Distant Seas
@@ -2025,6 +2064,11 @@ LEGO® Jurassic World™
 0004000000159C00
 37d7d6b2d6bf87274f53764191032bd2
 
+Langrisser Re:Incarnation -TENSEI- 
+(英文版)
+000400000018BF00
+efa343fdb7fccfd96572a06df34d8df5
+
 Moco Moco Friends (英文版)
 000400000018BB00
 3817d7d27630cb45768b775c3149ae3b
@@ -2077,6 +2121,11 @@ Puzzle & Dragons Z + Puzzle & Dragons Super Mario Bros. Edition(英文版)
 Puzzle & Dragons Z + Super Mario Bros. Edition 特別試玩版
 000400000016D200
 54a65b0ba772ef13c4858754fa7bf5f7
+
+Langrisser Re:Incarnation
+-TENSEI-
+000400000018E500
+2ae2c2f75fd3f9b2f18a1a8e5239e20a
 
 Super Mario Bros. 3
 0004000000184B00
