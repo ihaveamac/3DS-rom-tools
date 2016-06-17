@@ -20,7 +20,6 @@ There exist some work-in-progress guides at this repository's Wiki: https://gith
 ## SeedDB - `/seeddb`
 * `seeddb.bin` - contains seeds for games using seed crypto introduced in 9.6.0-24
  * [List of games and title IDs that use seed crypto](https://github.com/ihaveamac/3DS-rom-tools/wiki/SeedDB-list)
-* `seeddb_list.txt` - list of game names, title IDs, and seeds in `seeddb.bin` ([original source based on](http://pastebin.com/zNM8zYwa))
 
 ## External tools
 * [Decrypt9WIP](https://github.com/d0k3/Decrypt9WIP) by @d0k3 - Multipurpose content dumper and decryptor
