@@ -1,7 +1,9 @@
 # Nintendo 3DS ROM Tools
-Tools and guides for working with Nintendo 3DS games and applications (.3ds/.cci, .cia)
+Tools and guides for working with Nintendo 3DS games and applications (.3ds, .cci, .app, .cxi, .cfa, .cia)
 
 There exist some work-in-progress guides at this repository's Wiki: https://github.com/ihaveamac/3DS-rom-tools/wiki
+
+See this list of other tools that might be useful: https://github.com/ihaveamac/3DS-rom-tools/wiki/List-of-useful-tools
 
 ## NCCHInfo generation - `/ncchinfo_gen`
 * `ncchinfo_gen.py` - Generates `ncchinfo.bin`, which will generate XORpads for a game's ExHeader/ExeFS/RomFS on a 3DS console ([original source](https://github.com/d0k3/Decrypt9WIP/blob/2935c881f436cc940f44a9455c2ae63aff1744d8/scripts/ncchinfo_gen.py))
@@ -20,10 +22,3 @@ There exist some work-in-progress guides at this repository's Wiki: https://gith
 ## Seed database - `/seeddb`
 * `seeddb.bin` - contains seeds for games using seed crypto introduced in 9.6.0-24
  * [List of games and title IDs that use seed crypto](https://github.com/ihaveamac/3DS-rom-tools/wiki/SeedDB-list)
-
-## External tools
-* [Decrypt9WIP](https://github.com/d0k3/Decrypt9WIP) by @d0k3 - Multipurpose content dumper and decryptor
-* [Decrypt9UI](https://github.com/Shadowtrance/Decrypt9) by @Shadowtrance - Decrypt9WIP with a more fancy GUI
-* [FunkyCIA2](https://gbatemp.net/threads/release-funkycia2-build-cias-from-your-eshop-content-super-easy-and-fast-2-1-fix.376941/) by cearp - Terminal utility to download eShop purchases with a dumped `ticket.db`
-* [FunKeyCIA](https://gbatemp.net/threads/release-funkeycia-make-good-cias-from-eshop-content-no-tickets-needed.423025/page-8) by cearp - Terminal utility to download eShop contents using a title ID and encrypted titlekey
-* [CDN-FX](https://gbatemp.net/threads/release-groovycia.414004/) by @Ptrk25 - GUI version with a similar function to FunkyCIA2 + FunKeyCIA
